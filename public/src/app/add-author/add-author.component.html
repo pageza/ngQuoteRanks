@@ -3,10 +3,10 @@
   <h5 class="mt-2"><small class="text-muted ">Add a new quotable author: </small></h5>
 </div>
 <div class="card container">
-  <form (submit)="addAuthor(author)">
+  <form (submit)="addAuthor(newAuthor)">
     <label for="author">Name:</label>
-    <input id="author" type="text" [(ngModel)]="author.author">
+    <input id="author" name="author" type="text" [(ngModel)]="newAuthor.author">
     <button (click)="goHome()">Cancel</button>
-
+    <input type="submit" value="Submit">
   </form>
 </div>

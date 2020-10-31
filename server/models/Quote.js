@@ -6,11 +6,12 @@ const QuoteSchema = new mongoose.Schema({
     required: [true, 'An author is required'],
     minlength:[3, 'Author name must be more than 3 characters'],
   },
-  quote: {
+  quote: [{
     type: String,
     required: [true, 'A quote is required'],
-    minlength: [5, 'The quote must be at least 5 characters long']
-  },
+    minlength: [5, 'The quote must be at least 5 characters long'],
+    default: null
+  }],
   vote: {
     type: Number,
     default: 0

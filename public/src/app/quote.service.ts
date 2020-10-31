@@ -10,6 +10,14 @@ export class QuoteService {
   constructor(private _http: HttpClient) { }
 
   addAuthor(author) {
+    console.log(author.author);
+
     return this._http.post('/quotes/author', author);
+  }
+  getAuthors(){
+    return this._http.get('/quotes')
+  }
+  getOneAuthor(id) {
+    return this._http.get('/quotes/'+id)
   }
 }

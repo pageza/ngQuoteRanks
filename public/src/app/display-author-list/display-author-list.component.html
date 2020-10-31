@@ -14,7 +14,7 @@
     <tr *ngFor="let author of authors">
       <td>{{author.author}}</td>
       <td>
-        <button>View quotes</button>
+        <button (click)="viewQuotes(author._id)">View quotes</button>
         <button>Edit</button>
       </td>
     </tr>
