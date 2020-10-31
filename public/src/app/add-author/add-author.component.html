@@ -1,0 +1,12 @@
+<div class="container mt-5">
+  <a class="h5" [routerLink]="['']">Home</a>
+  <h5 class="mt-2"><small class="text-muted ">Add a new quotable author: </small></h5>
+</div>
+<div class="card container">
+  <form (submit)="addAuthor(author)">
+    <label for="author">Name:</label>
+    <input id="author" type="text" [(ngModel)]="author.author">
+    <button (click)="goHome()">Cancel</button>
+
+  </form>
+</div>

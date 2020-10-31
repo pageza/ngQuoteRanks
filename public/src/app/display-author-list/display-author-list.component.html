@@ -1,0 +1,23 @@
+<div class="container mt-5">
+  <a class="h5" [routerLink]="['author']">Add a quotable author</a>
+  <h5 class="mt-2"><small class="text-muted ">We have quotes by: </small></h5>
+</div>
+<div class="container">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">Author</th>
+      <th scope="col">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let author of authors">
+      <td>{{author.author}}</td>
+      <td>
+        <button>View quotes</button>
+        <button>Edit</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
