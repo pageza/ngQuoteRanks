@@ -2,11 +2,14 @@
   <a class="h5" [routerLink]="['']">Home</a>
   <h5 class="mt-2"><small class="text-muted ">Add a new quotable author: </small></h5>
 </div>
-<div class="card container">
-  <form (submit)="addAuthor(newAuthor)">
+<div class="container">
+  <form class="form-group" (submit)="addAuthor(newAuthor)">
     <label for="author">Name:</label>
     <input id="author" name="author" type="text" [(ngModel)]="newAuthor.author">
-    <button (click)="goHome()">Cancel</button>
-    <input type="submit" value="Submit">
+<!--    TODO: add error message -->
+    <div class="row">
+      <button class="ml-2 btn btn-danger" (click)="goHome()">Cancel</button>
+      <button class="ml-2 btn btn-primary" type="submit">Submit</button>
+    </div>
   </form>
 </div>

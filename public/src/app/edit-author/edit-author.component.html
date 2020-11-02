@@ -1,1 +1,16 @@
-<p>edit-author works!</p>
+<div class="container mt-5">
+  <a class="h5" [routerLink]="['']">Home</a>
+  <h5 class="mt-2"><small class="text-muted ">Add a new quotable author: </small></h5>
+</div>
+<div class="container">
+  <form class="form-group" (submit)="editAuthor(author)">
+    <label for="author">Name:</label>
+    <input id="author" name="author" type="text" [(ngModel)]="author.author">
+<!--    TODO: add error message-->
+    <div class="row">
+      <button class="ml-3 btn btn-danger" (click)="goHome()">Cancel</button>
+      <button class="ml-3 btn btn-primary" type="submit" >Submit</button>
+    </div>
+  </form>
+</div>
+

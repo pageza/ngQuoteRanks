@@ -25,4 +25,7 @@ export class DisplayAuthorListComponent implements OnInit {
   viewQuotes(id) {
     this._router.navigate(['/author/'+id])
   }
+  editAuthor(id) {
+    this._router.navigate(['/edit/' + id])
+  }
 }

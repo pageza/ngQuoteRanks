@@ -32,7 +32,7 @@ webpackEmptyAsyncContext.id = "./$$_lazy_route_resource lazy recursive";
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<p>add-author-quote works!</p>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container mt-5\">\n<a class=\"h5\" [routerLink]=\"['']\">Home</a>\n<h5 class=\"mt-2\"><small class=\"text-muted \">Provide a quote by {{author.author}}: </small></h5>\n</div>\n<div class=\"container\">\n  <form class=\"form-group\" (submit)=\"addQuote(quote)\">\n    <label for=\"quote\">Quote:</label>\n    <input id=\"quote\" name=\"quote\" type=\"text\" [(ngModel)]=\"quote.quote\" placeholder=\"Enter a quote\">\n    <input name=\"authorID\" type=\"text\" [(ngModel)]=\"author._id\" >\n<!--    TODO: add error message-->\n    <div class=\"row\">\n      <button class=\"ml-3 btn btn-danger\" (click)=\"goBack()\">Cancel</button>\n      <button class=\"ml-3 btn btn-primary\" type=\"submit\">Submit</button>\n    </div>\n  </form>\n</div>\n\n");
 
 /***/ }),
 
@@ -45,7 +45,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container mt-5\">\n  <a class=\"h5\" [routerLink]=\"['']\">Home</a>\n  <h5 class=\"mt-2\"><small class=\"text-muted \">Add a new quotable author: </small></h5>\n</div>\n<div class=\"card container\">\n  <form (submit)=\"addAuthor(newAuthor)\">\n    <label for=\"author\">Name:</label>\n    <input id=\"author\" name=\"author\" type=\"text\" [(ngModel)]=\"newAuthor.author\">\n    <button (click)=\"goHome()\">Cancel</button>\n    <input type=\"submit\" value=\"Submit\">\n  </form>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container mt-5\">\n  <a class=\"h5\" [routerLink]=\"['']\">Home</a>\n  <h5 class=\"mt-2\"><small class=\"text-muted \">Add a new quotable author: </small></h5>\n</div>\n<div class=\"container\">\n  <form class=\"form-group\" (submit)=\"addAuthor(newAuthor)\">\n    <label for=\"author\">Name:</label>\n    <input id=\"author\" name=\"author\" type=\"text\" [(ngModel)]=\"newAuthor.author\">\n<!--    TODO: add error message -->\n    <div class=\"row\">\n      <button class=\"ml-2 btn btn-danger\" (click)=\"goHome()\">Cancel</button>\n      <button class=\"ml-2 btn btn-primary\" type=\"submit\">Submit</button>\n    </div>\n  </form>\n</div>\n");
 
 /***/ }),
 
@@ -71,7 +71,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<p>author-quotes works!</p>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container mt-5\">\n  <div class=\"navbar\">\n    <a class=\"h5\" [routerLink]=\"['']\">Home</a>\n    <a class=\"h5\" [routerLink]=\"['/quote/author', author._id]\">Add a quote</a>\n  </div>\n  <h5 class=\"mt-2\"><small class=\"text-muted \">Quotes by {{author.author}}:</small></h5>\n</div>\n{{author | json}}\n<div class=\"container\">\n  <table class=\"table table-striped\">\n    <thead>\n    <tr>\n      <th scope=\"col\">Quote</th>\n      <th scope=\"col\">Vote</th>\n      <th scope=\"col\">Actions</th>\n    </tr>\n    </thead>\n    <tbody>\n    <tr *ngFor=\"let quote of author.quotes \">\n      <td>{{quote.quote}}</td>\n      <td>{{quote.vote}}</td>\n      <td>\n        <button class=\"ml-2 btn btn-primary\" (click)=\"voteUp(quote)\">Vote Up</button>\n        <button class=\"ml-2 btn btn-secondary\" (click)=\"voteDown(quote)\">Vote Down</button>\n        <button class=\"ml-2 btn btn-danger\" (click)=\"deleteQuote(quote)\">Delete</button>\n      </td>\n    </tr>\n    </tbody>\n  </table>\n</div>\n");
 
 /***/ }),
 
@@ -84,7 +84,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container mt-5\">\n  <a class=\"h5\" [routerLink]=\"['author']\">Add a quotable author</a>\n  <h5 class=\"mt-2\"><small class=\"text-muted \">We have quotes by: </small></h5>\n</div>\n<div class=\"container\">\n  <table class=\"table table-striped\">\n    <thead>\n    <tr>\n      <th scope=\"col\">Author</th>\n      <th scope=\"col\">Actions</th>\n    </tr>\n    </thead>\n    <tbody>\n    <tr *ngFor=\"let author of authors\">\n      <td>{{author.author}}</td>\n      <td>\n        <button (click)=\"viewQuotes(author._id)\">View quotes</button>\n        <button>Edit</button>\n      </td>\n    </tr>\n    </tbody>\n  </table>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container mt-5\">\n  <a class=\"h5\" [routerLink]=\"['author']\">Add a quotable author</a>\n  <h5 class=\"mt-2\"><small class=\"text-muted \">We have quotes by: </small></h5>\n</div>\n<div class=\"container\">\n  <table class=\"table table-striped\">\n    <thead>\n    <tr>\n      <th scope=\"col\">Author</th>\n      <th scope=\"col\">Actions</th>\n    </tr>\n    </thead>\n    <tbody>\n    <tr *ngFor=\"let author of authors\">\n      <td>{{author.author}}</td>\n      <td>\n        <button class=\"ml-2 btn btn-danger\" (click)=\"viewQuotes(author._id)\">View quotes</button>\n        <button class=\"ml-2 btn btn-primary\" (click)=\"editAuthor(author._id)\">Edit</button>\n      </td>\n    </tr>\n    </tbody>\n  </table>\n</div>\n");
 
 /***/ }),
 
@@ -97,7 +97,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<p>edit-author works!</p>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container mt-5\">\n  <a class=\"h5\" [routerLink]=\"['']\">Home</a>\n  <h5 class=\"mt-2\"><small class=\"text-muted \">Add a new quotable author: </small></h5>\n</div>\n<div class=\"container\">\n  <form class=\"form-group\" (submit)=\"editAuthor(author)\">\n    <label for=\"author\">Name:</label>\n    <input id=\"author\" name=\"author\" type=\"text\" [(ngModel)]=\"author.author\">\n<!--    TODO: add error message-->\n    <div class=\"row\">\n      <button class=\"ml-3 btn btn-danger\" (click)=\"goHome()\">Cancel</button>\n      <button class=\"ml-3 btn btn-primary\" type=\"submit\" >Submit</button>\n    </div>\n  </form>\n</div>\n\n");
 
 /***/ }),
 
@@ -380,13 +380,48 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AddAuthorQuoteComponent", function() { return AddAuthorQuoteComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _quote_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../quote.service */ "./src/app/quote.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
+
+
+
 
 
 let AddAuthorQuoteComponent = class AddAuthorQuoteComponent {
-    constructor() { }
+    constructor(_route, _router, _location, _quote) {
+        this._route = _route;
+        this._router = _router;
+        this._location = _location;
+        this._quote = _quote;
+        this.quote = { quote: '', id: '' };
+    }
     ngOnInit() {
+        this._route.params.subscribe(params => this.params = params);
+        this.getAuthor(this.params);
+        this.quote.id = this.params.id;
+    }
+    getAuthor(id) {
+        const observable = this._quote.getOneAuthor(id.id);
+        observable.subscribe(data => this.author = data);
+    }
+    addQuote(quote) {
+        console.log(quote);
+        const observable = this._quote.addQuote(quote);
+        // //TODO: add logic to addQuote subscribe to handle errors
+        observable.subscribe(data => console.log(data));
+        // this.goBack()
+    }
+    goBack() {
+        this._location.back();
     }
 };
+AddAuthorQuoteComponent.ctorParameters = () => [
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] },
+    { type: _angular_common__WEBPACK_IMPORTED_MODULE_4__["Location"] },
+    { type: _quote_service__WEBPACK_IMPORTED_MODULE_2__["QuoteService"] }
+];
 AddAuthorQuoteComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-add-author-quote',
@@ -441,7 +476,8 @@ let AddAuthorComponent = class AddAuthorComponent {
     }
     addAuthor(newAuthor) {
         const observable = this._quote.addAuthor(newAuthor);
-        observable.subscribe(data => console.log(data)); // TODO: Move error and success logic into the subscribe method
+        // TODO: write error and success logic into the addAuthor subscribe method
+        observable.subscribe(data => console.log(data));
         this.newAuthor = { 'author': '' };
         this.goHome();
     }
@@ -481,6 +517,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _add_author_add_author_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./add-author/add-author.component */ "./src/app/add-author/add-author.component.ts");
 /* harmony import */ var _display_author_list_display_author_list_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./display-author-list/display-author-list.component */ "./src/app/display-author-list/display-author-list.component.ts");
 /* harmony import */ var _author_quotes_author_quotes_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./author-quotes/author-quotes.component */ "./src/app/author-quotes/author-quotes.component.ts");
+/* harmony import */ var _edit_author_edit_author_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./edit-author/edit-author.component */ "./src/app/edit-author/edit-author.component.ts");
+/* harmony import */ var _add_author_quote_add_author_quote_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./add-author-quote/add-author-quote.component */ "./src/app/add-author-quote/add-author-quote.component.ts");
+
+
 
 
 
@@ -490,7 +530,9 @@ __webpack_require__.r(__webpack_exports__);
 const routes = [
     { path: '', component: _display_author_list_display_author_list_component__WEBPACK_IMPORTED_MODULE_4__["DisplayAuthorListComponent"] },
     { path: 'author', component: _add_author_add_author_component__WEBPACK_IMPORTED_MODULE_3__["AddAuthorComponent"] },
-    { path: 'author/:id', component: _author_quotes_author_quotes_component__WEBPACK_IMPORTED_MODULE_5__["AuthorQuotesComponent"] }
+    { path: 'author/:id', component: _author_quotes_author_quotes_component__WEBPACK_IMPORTED_MODULE_5__["AuthorQuotesComponent"] },
+    { path: 'edit/:id', component: _edit_author_edit_author_component__WEBPACK_IMPORTED_MODULE_6__["EditAuthorComponent"] },
+    { path: 'quote/author/:id', component: _add_author_quote_add_author_quote_component__WEBPACK_IMPORTED_MODULE_7__["AddAuthorQuoteComponent"] }
 ];
 let AppRoutingModule = class AppRoutingModule {
 };
@@ -637,13 +679,54 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuthorQuotesComponent", function() { return AuthorQuotesComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _quote_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../quote.service */ "./src/app/quote.service.ts");
+
+
 
 
 let AuthorQuotesComponent = class AuthorQuotesComponent {
-    constructor() { }
+    constructor(_route, _router, _quote) {
+        this._route = _route;
+        this._router = _router;
+        this._quote = _quote;
+    }
     ngOnInit() {
+        this._route.params.subscribe(params => this.params = params);
+        this.getAuthor(this.params);
+    }
+    getAuthor(id) {
+        const observable = this._quote.getOneAuthor(id.id);
+        observable.subscribe(data => this.author = data);
+    }
+    voteUp(quote) {
+        // TODO: figure out how to send both author id and quote id to the service
+        quote.vote += 1;
+        quote.author.id = this.author._id;
+        console.log(quote);
+        const observable = this._quote.voteUp(quote);
+        observable.subscribe(data => console.log(data));
+    }
+    voteDown(quote) {
+        // TODO: figure out how to send both author id and quote id to the service
+        quote.vote -= 1;
+        const observable = this._quote.voteDown(quote);
+        observable.subscribe(data => console.log(data));
+    }
+    deleteQuote(quote) {
+        // TODO: figure out how to send both author id and quote id to the service
+        const observable = this._quote.deleteQuote(quote);
+        observable.subscribe(data => console.log(data));
+    }
+    goHome() {
+        this._router.navigate(['/']);
     }
 };
+AuthorQuotesComponent.ctorParameters = () => [
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] },
+    { type: _quote_service__WEBPACK_IMPORTED_MODULE_3__["QuoteService"] }
+];
 AuthorQuotesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-author-quotes',
@@ -703,6 +786,9 @@ let DisplayAuthorListComponent = class DisplayAuthorListComponent {
     viewQuotes(id) {
         this._router.navigate(['/author/' + id]);
     }
+    editAuthor(id) {
+        this._router.navigate(['/edit/' + id]);
+    }
 };
 DisplayAuthorListComponent.ctorParameters = () => [
     { type: _quote_service__WEBPACK_IMPORTED_MODULE_2__["QuoteService"] },
@@ -745,13 +831,41 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EditAuthorComponent", function() { return EditAuthorComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _quote_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../quote.service */ "./src/app/quote.service.ts");
+
+
 
 
 let EditAuthorComponent = class EditAuthorComponent {
-    constructor() { }
+    constructor(_quote, _route, _router) {
+        this._quote = _quote;
+        this._route = _route;
+        this._router = _router;
+    }
     ngOnInit() {
+        this._route.params.subscribe(params => this.params = params);
+        this.getAuthor(this.params);
+    }
+    getAuthor(id) {
+        const observable = this._quote.getOneAuthor(id.id);
+        observable.subscribe(data => this.author = data);
+    }
+    editAuthor(author) {
+        const observable = this._quote.editAuthor(author);
+        //TODO: add logic into the editAuthor subscribe to handle errors
+        observable.subscribe(data => console.log(data));
+        this.goHome();
+    }
+    goHome() {
+        this._router.navigate(['/']);
     }
 };
+EditAuthorComponent.ctorParameters = () => [
+    { type: _quote_service__WEBPACK_IMPORTED_MODULE_3__["QuoteService"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] }
+];
 EditAuthorComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-edit-author',
@@ -786,11 +900,28 @@ let QuoteService = class QuoteService {
         this._http = _http;
     }
     addAuthor(author) {
-        console.log(author.author);
         return this._http.post('/quotes/author', author);
     }
     getAuthors() {
         return this._http.get('/quotes');
+    }
+    getOneAuthor(id) {
+        return this._http.get('/quotes/' + id);
+    }
+    editAuthor(author) {
+        return this._http.put('/quotes/author/' + author._id, author);
+    }
+    addQuote(quote) {
+        return this._http.put('/author/quote/' + quote.id, quote);
+    }
+    voteUp(quote) {
+        return this._http.put('/vote/' + quote.id, quote);
+    }
+    voteDown(quote) {
+        return this._http.put('/vote/' + quote.id, quote);
+    }
+    deleteQuote(quote) {
+        return this._http.delete('/quotes/' + quote.id);
     }
 };
 QuoteService.ctorParameters = () => [
@@ -871,7 +1002,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_2__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/zach/Development/angular/ngQuoteRanks/public/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /home/zach/Development/devPractice/angular/ngQuoteRanks/public/src/main.ts */"./src/main.ts");
 
 
 /***/ })

@@ -16,7 +16,8 @@ export class AddAuthorComponent implements OnInit {
   }
   addAuthor(newAuthor) {
     const observable = this._quote.addAuthor(newAuthor);
-    observable.subscribe( data => console.log(data)); // TODO: Move error and success logic into the subscribe method
+    // TODO: write error and success logic into the addAuthor subscribe method
+    observable.subscribe( data => console.log(data));
     this.newAuthor = {'author' : ''}
     this.goHome()
   }

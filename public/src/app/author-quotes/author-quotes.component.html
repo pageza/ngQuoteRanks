@@ -1,1 +1,30 @@
-<p>author-quotes works!</p>
+<div class="container mt-5">
+  <div class="navbar">
+    <a class="h5" [routerLink]="['']">Home</a>
+    <a class="h5" [routerLink]="['/quote/author', author._id]">Add a quote</a>
+  </div>
+  <h5 class="mt-2"><small class="text-muted ">Quotes by {{author.author}}:</small></h5>
+</div>
+{{author | json}}
+<div class="container">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">Quote</th>
+      <th scope="col">Vote</th>
+      <th scope="col">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let quote of author.quotes ">
+      <td>{{quote.quote}}</td>
+      <td>{{quote.vote}}</td>
+      <td>
+        <button class="ml-2 btn btn-primary" (click)="voteUp(quote)">Vote Up</button>
+        <button class="ml-2 btn btn-secondary" (click)="voteDown(quote)">Vote Down</button>
+        <button class="ml-2 btn btn-danger" (click)="deleteQuote(quote)">Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

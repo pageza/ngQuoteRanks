@@ -9,7 +9,7 @@ module.exports = {
             .catch(err => res.json(err))
     },
     oneQuote: (req,res) => {
-        Quote.findOne({_id: req.params.id})
+        Quote.findById({_id: req.params.id})
             .then( author => res.json(author))
             .catch( err => res.json(err))
     },
@@ -27,6 +27,13 @@ module.exports = {
             .then( newQuote => res.json(newQuote))
             .catch( err => res.json(err))
     },
+    addQuote: (req,res) => {
+        Quote.findByIdAndUpdate( {_id: req.body.id}, {
+            $push: {'quotes': {'quote' : req.body.quote}}
+        }, {safe: true, upsert: true, new: true,runValidators: true})
+            .then( data => res.json(data))
+            .catch(err => res.json(err))
+    },
     editQuote: (req,res) => {
         Quote.findByIdAndUpdate({_id: req.params.id}, {
             author: req.body.author
@@ -34,10 +41,15 @@ module.exports = {
             .then( data => res.json(data))
             .catch(err => res.json(err))
     },
+    voteUp: (req,res) => {
+        //TODO: increment vote count for specific quote in quotes array
+        // Quote.find({_id:})
+    },
+    voteDown: (req,res) => {
+        //TODO: decrement vote count for specific quote in quotes array
+    },
     destroyQuote: (req,res) => {
-        Quote.deleteOne({_id: req.params.id})
-            .then(data => res.json(data))
-            .catch(err => res.json(err))
+        //TODO: find author by and use $pull to remove quote from quotes array by quote id
     }
 
 }

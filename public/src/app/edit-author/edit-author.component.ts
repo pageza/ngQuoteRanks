@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute} from "@angular/router";
+import { QuoteService} from "../quote.service";
 
 @Component({
   selector: 'app-edit-author',
@@ -6,10 +8,30 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./edit-author.component.css']
 })
 export class EditAuthorComponent implements OnInit {
+  params: any;
+  author: any;
 
-  constructor() { }
+  constructor(
+    private _quote: QuoteService,
+    private _route: ActivatedRoute,
+    private _router: Router
+  ) { }
 
   ngOnInit() {
+    this._route.params.subscribe(params => this.params = params)
+    this.getAuthor(this.params)
   }
-
+  getAuthor(id) {
+    const observable = this._quote.getOneAuthor(id.id)
+    observable.subscribe( data => this.author = data)
+  }
+  editAuthor(author) {
+    const observable = this._quote.editAuthor(author)
+    //TODO: add logic into the editAuthor subscribe to handle errors
+    observable.subscribe(data => console.log(data))
+    this.goHome()
+  }
+  goHome() {
+    this._router.navigate(['/'])
+  }
 }

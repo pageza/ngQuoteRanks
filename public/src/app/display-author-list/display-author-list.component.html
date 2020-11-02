@@ -14,8 +14,8 @@
     <tr *ngFor="let author of authors">
       <td>{{author.author}}</td>
       <td>
-        <button (click)="viewQuotes(author._id)">View quotes</button>
-        <button>Edit</button>
+        <button class="ml-2 btn btn-danger" (click)="viewQuotes(author._id)">View quotes</button>
+        <button class="ml-2 btn btn-primary" (click)="editAuthor(author._id)">Edit</button>
       </td>
     </tr>
     </tbody>
