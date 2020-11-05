@@ -12,6 +12,7 @@ export class AddAuthorQuoteComponent implements OnInit {
   params: any;
   author: any;
   quote: any = { quote: '', id: ''}
+  errors: any;
 
   constructor(
     private _route: ActivatedRoute,
@@ -30,11 +31,15 @@ export class AddAuthorQuoteComponent implements OnInit {
     observable.subscribe( data => this.author = data)
   }
   addQuote(quote) {
-    console.log(quote)
     const observable = this._quote.addQuote(quote)
-    // //TODO: add logic to addQuote subscribe to handle errors
-    observable.subscribe(data => console.log(data))
-    // this.goBack()
+    observable.subscribe(data => {
+      if (data['errors']) {
+        this.errors = data['errors'].quotes.errors.quote
+      } else {
+        console.log("Success!")
+        this.goBack()
+      }
+    })
   }
   goBack() {
     this._location.back()

@@ -5,7 +5,6 @@
   </div>
   <h5 class="mt-2"><small class="text-muted ">Quotes by {{author.author}}:</small></h5>
 </div>
-{{author | json}}
 <div class="container">
   <table class="table table-striped">
     <thead>
@@ -20,9 +19,9 @@
       <td>{{quote.quote}}</td>
       <td>{{quote.vote}}</td>
       <td>
-        <button class="ml-2 btn btn-primary" (click)="voteUp(quote)">Vote Up</button>
-        <button class="ml-2 btn btn-secondary" (click)="voteDown(quote)">Vote Down</button>
-        <button class="ml-2 btn btn-danger" (click)="deleteQuote(quote)">Delete</button>
+        <button class="ml-2 btn btn-primary" (click)="voteUp(quote, author)">Vote Up</button>
+        <button class="ml-2 btn btn-secondary" (click)="voteDown(quote, author)">Vote Down</button>
+        <button class="ml-2 btn btn-danger" (click)="deleteQuote(quote, author)">Delete</button>
       </td>
     </tr>
     </tbody>

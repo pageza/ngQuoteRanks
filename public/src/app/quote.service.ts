@@ -24,13 +24,11 @@ export class QuoteService {
   addQuote(quote) {
     return this._http.put( '/author/quote/' + quote.id, quote)
   }
-  voteUp(quote) {
-    return this._http.put('/vote/' + quote.id, quote)
+  vote(body) {
+    return this._http.put('/vote/' + body.author._id, body)
   }
-  voteDown(quote) {
-    return this._http.put('/vote/' + quote.id, quote)
-  }
-  deleteQuote(quote) {
-    return this._http.delete('/quotes/' + quote.id)
+
+  deleteQuote(body) {
+    return this._http.patch('/quotes/' + body.author._id, body)
   }
 }

@@ -41,15 +41,18 @@ module.exports = {
             .then( data => res.json(data))
             .catch(err => res.json(err))
     },
-    voteUp: (req,res) => {
-        //TODO: increment vote count for specific quote in quotes array
-        // Quote.find({_id:})
-    },
-    voteDown: (req,res) => {
-        //TODO: decrement vote count for specific quote in quotes array
+    vote: (req,res) => {
+        Quote.updateOne({_id: req.body.author._id, 'quotes._id': req.body.quote._id},
+            {$set:{'quotes.$.vote': req.body.quote.vote}})
+            .then(data => res.json(data))
+            .catch(err => res.json(err))
     },
     destroyQuote: (req,res) => {
-        //TODO: find author by and use $pull to remove quote from quotes array by quote id
+        Quote.updateOne({_id: req.body.author._id},
+            {$pull:{"quotes":{"_id":req.body.quote._id}}})
+            .then(data => res.json(data))
+            .catch(err => res.json(err))
+
     }
 
 }

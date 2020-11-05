@@ -6,7 +6,7 @@
   <form class="form-group" (submit)="addAuthor(newAuthor)">
     <label for="author">Name:</label>
     <input id="author" name="author" type="text" [(ngModel)]="newAuthor.author">
-<!--    TODO: add error message -->
+    <p class="alert-danger card border-danger w-auto" *ngIf="errors">{{errors.author.message}}</p>
     <div class="row">
       <button class="ml-2 btn btn-danger" (click)="goHome()">Cancel</button>
       <button class="ml-2 btn btn-primary" type="submit">Submit</button>

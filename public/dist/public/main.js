@@ -32,7 +32,7 @@ webpackEmptyAsyncContext.id = "./$$_lazy_route_resource lazy recursive";
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container mt-5\">\n<a class=\"h5\" [routerLink]=\"['']\">Home</a>\n<h5 class=\"mt-2\"><small class=\"text-muted \">Provide a quote by {{author.author}}: </small></h5>\n</div>\n<div class=\"container\">\n  <form class=\"form-group\" (submit)=\"addQuote(quote)\">\n    <label for=\"quote\">Quote:</label>\n    <input id=\"quote\" name=\"quote\" type=\"text\" [(ngModel)]=\"quote.quote\" placeholder=\"Enter a quote\">\n    <input name=\"authorID\" type=\"text\" [(ngModel)]=\"author._id\" >\n<!--    TODO: add error message-->\n    <div class=\"row\">\n      <button class=\"ml-3 btn btn-danger\" (click)=\"goBack()\">Cancel</button>\n      <button class=\"ml-3 btn btn-primary\" type=\"submit\">Submit</button>\n    </div>\n  </form>\n</div>\n\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container mt-5\">\n<a class=\"h5\" [routerLink]=\"['']\">Home</a>\n<h5 class=\"mt-2\"><small class=\"text-muted \">Provide a quote by {{author.author}}: </small></h5>\n</div>\n<div class=\"container\">\n  <form class=\"form-group\" (submit)=\"addQuote(quote)\">\n    <label for=\"quote\">Quote:</label>\n    <input id=\"quote\" name=\"quote\" type=\"text\" [(ngModel)]=\"quote.quote\" placeholder=\"Enter a quote\">\n    <p class=\"alert-danger card border-danger w-auto\" *ngIf=\"errors\">{{errors.message}}</p>\n    <div class=\"row\">\n      <button class=\"ml-3 btn btn-danger\" (click)=\"goBack()\">Cancel</button>\n      <button class=\"ml-3 btn btn-primary\" type=\"submit\">Submit</button>\n    </div>\n  </form>\n</div>\n\n");
 
 /***/ }),
 
@@ -45,7 +45,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container mt-5\">\n  <a class=\"h5\" [routerLink]=\"['']\">Home</a>\n  <h5 class=\"mt-2\"><small class=\"text-muted \">Add a new quotable author: </small></h5>\n</div>\n<div class=\"container\">\n  <form class=\"form-group\" (submit)=\"addAuthor(newAuthor)\">\n    <label for=\"author\">Name:</label>\n    <input id=\"author\" name=\"author\" type=\"text\" [(ngModel)]=\"newAuthor.author\">\n<!--    TODO: add error message -->\n    <div class=\"row\">\n      <button class=\"ml-2 btn btn-danger\" (click)=\"goHome()\">Cancel</button>\n      <button class=\"ml-2 btn btn-primary\" type=\"submit\">Submit</button>\n    </div>\n  </form>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container mt-5\">\n  <a class=\"h5\" [routerLink]=\"['']\">Home</a>\n  <h5 class=\"mt-2\"><small class=\"text-muted \">Add a new quotable author: </small></h5>\n</div>\n<div class=\"container\">\n  <form class=\"form-group\" (submit)=\"addAuthor(newAuthor)\">\n    <label for=\"author\">Name:</label>\n    <input id=\"author\" name=\"author\" type=\"text\" [(ngModel)]=\"newAuthor.author\">\n    <p class=\"alert-danger card border-danger w-auto\" *ngIf=\"errors\">{{errors.author.message}}</p>\n    <div class=\"row\">\n      <button class=\"ml-2 btn btn-danger\" (click)=\"goHome()\">Cancel</button>\n      <button class=\"ml-2 btn btn-primary\" type=\"submit\">Submit</button>\n    </div>\n  </form>\n</div>\n");
 
 /***/ }),
 
@@ -71,7 +71,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container mt-5\">\n  <div class=\"navbar\">\n    <a class=\"h5\" [routerLink]=\"['']\">Home</a>\n    <a class=\"h5\" [routerLink]=\"['/quote/author', author._id]\">Add a quote</a>\n  </div>\n  <h5 class=\"mt-2\"><small class=\"text-muted \">Quotes by {{author.author}}:</small></h5>\n</div>\n{{author | json}}\n<div class=\"container\">\n  <table class=\"table table-striped\">\n    <thead>\n    <tr>\n      <th scope=\"col\">Quote</th>\n      <th scope=\"col\">Vote</th>\n      <th scope=\"col\">Actions</th>\n    </tr>\n    </thead>\n    <tbody>\n    <tr *ngFor=\"let quote of author.quotes \">\n      <td>{{quote.quote}}</td>\n      <td>{{quote.vote}}</td>\n      <td>\n        <button class=\"ml-2 btn btn-primary\" (click)=\"voteUp(quote)\">Vote Up</button>\n        <button class=\"ml-2 btn btn-secondary\" (click)=\"voteDown(quote)\">Vote Down</button>\n        <button class=\"ml-2 btn btn-danger\" (click)=\"deleteQuote(quote)\">Delete</button>\n      </td>\n    </tr>\n    </tbody>\n  </table>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container mt-5\">\n  <div class=\"navbar\">\n    <a class=\"h5\" [routerLink]=\"['']\">Home</a>\n    <a class=\"h5\" [routerLink]=\"['/quote/author', author._id]\">Add a quote</a>\n  </div>\n  <h5 class=\"mt-2\"><small class=\"text-muted \">Quotes by {{author.author}}:</small></h5>\n</div>\n<div class=\"container\">\n  <table class=\"table table-striped\">\n    <thead>\n    <tr>\n      <th scope=\"col\">Quote</th>\n      <th scope=\"col\">Vote</th>\n      <th scope=\"col\">Actions</th>\n    </tr>\n    </thead>\n    <tbody>\n    <tr *ngFor=\"let quote of author.quotes \">\n      <td>{{quote.quote}}</td>\n      <td>{{quote.vote}}</td>\n      <td>\n        <button class=\"ml-2 btn btn-primary\" (click)=\"voteUp(quote, author)\">Vote Up</button>\n        <button class=\"ml-2 btn btn-secondary\" (click)=\"voteDown(quote, author)\">Vote Down</button>\n        <button class=\"ml-2 btn btn-danger\" (click)=\"deleteQuote(quote, author)\">Delete</button>\n      </td>\n    </tr>\n    </tbody>\n  </table>\n</div>\n");
 
 /***/ }),
 
@@ -97,7 +97,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container mt-5\">\n  <a class=\"h5\" [routerLink]=\"['']\">Home</a>\n  <h5 class=\"mt-2\"><small class=\"text-muted \">Add a new quotable author: </small></h5>\n</div>\n<div class=\"container\">\n  <form class=\"form-group\" (submit)=\"editAuthor(author)\">\n    <label for=\"author\">Name:</label>\n    <input id=\"author\" name=\"author\" type=\"text\" [(ngModel)]=\"author.author\">\n<!--    TODO: add error message-->\n    <div class=\"row\">\n      <button class=\"ml-3 btn btn-danger\" (click)=\"goHome()\">Cancel</button>\n      <button class=\"ml-3 btn btn-primary\" type=\"submit\" >Submit</button>\n    </div>\n  </form>\n</div>\n\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container mt-5\">\n  <a class=\"h5\" [routerLink]=\"['']\">Home</a>\n  <h5 class=\"mt-2\"><small class=\"text-muted \">Add a new quotable author: </small></h5>\n</div>\n<div class=\"container\">\n  <form class=\"form-group\" (submit)=\"editAuthor(author)\">\n    <label for=\"author\">Name:</label>\n    <input id=\"author\" name=\"author\" type=\"text\" [(ngModel)]=\"author.author\">\n    <p class=\"alert-danger card border-danger w-auto\" *ngIf=\"errors\">{{errors.author.message}}</p>\n    <div class=\"row\">\n      <button class=\"ml-3 btn btn-danger\" (click)=\"goHome()\">Cancel</button>\n      <button class=\"ml-3 btn btn-primary\" type=\"submit\" >Submit</button>\n    </div>\n  </form>\n</div>\n\n");
 
 /***/ }),
 
@@ -406,11 +406,16 @@ let AddAuthorQuoteComponent = class AddAuthorQuoteComponent {
         observable.subscribe(data => this.author = data);
     }
     addQuote(quote) {
-        console.log(quote);
         const observable = this._quote.addQuote(quote);
-        // //TODO: add logic to addQuote subscribe to handle errors
-        observable.subscribe(data => console.log(data));
-        // this.goBack()
+        observable.subscribe(data => {
+            if (data['errors']) {
+                this.errors = data['errors'].quotes.errors.quote;
+            }
+            else {
+                console.log("Success!");
+                this.goBack();
+            }
+        });
     }
     goBack() {
         this._location.back();
@@ -476,10 +481,16 @@ let AddAuthorComponent = class AddAuthorComponent {
     }
     addAuthor(newAuthor) {
         const observable = this._quote.addAuthor(newAuthor);
-        // TODO: write error and success logic into the addAuthor subscribe method
-        observable.subscribe(data => console.log(data));
-        this.newAuthor = { 'author': '' };
-        this.goHome();
+        observable.subscribe(data => {
+            if (data['errors']) {
+                this.errors = data['errors'];
+            }
+            else {
+                console.log("Success!");
+                this.newAuthor = { 'author': '' };
+                this.goHome();
+            }
+        });
     }
     goHome() {
         this._router.navigate(['']);
@@ -699,24 +710,23 @@ let AuthorQuotesComponent = class AuthorQuotesComponent {
         const observable = this._quote.getOneAuthor(id.id);
         observable.subscribe(data => this.author = data);
     }
-    voteUp(quote) {
-        // TODO: figure out how to send both author id and quote id to the service
+    voteUp(quote, author) {
         quote.vote += 1;
-        quote.author.id = this.author._id;
-        console.log(quote);
-        const observable = this._quote.voteUp(quote);
+        let body = { 'quote': quote, 'author': author };
+        const observable = this._quote.vote(body);
         observable.subscribe(data => console.log(data));
     }
-    voteDown(quote) {
-        // TODO: figure out how to send both author id and quote id to the service
+    voteDown(quote, author) {
         quote.vote -= 1;
-        const observable = this._quote.voteDown(quote);
+        let body = { 'quote': quote, 'author': author };
+        const observable = this._quote.vote(body);
         observable.subscribe(data => console.log(data));
     }
-    deleteQuote(quote) {
-        // TODO: figure out how to send both author id and quote id to the service
-        const observable = this._quote.deleteQuote(quote);
+    deleteQuote(quote, author) {
+        let body = { 'quote': quote, 'author': author };
+        const observable = this._quote.deleteQuote(body);
         observable.subscribe(data => console.log(data));
+        this.ngOnInit();
     }
     goHome() {
         this._router.navigate(['/']);
@@ -853,9 +863,15 @@ let EditAuthorComponent = class EditAuthorComponent {
     }
     editAuthor(author) {
         const observable = this._quote.editAuthor(author);
-        //TODO: add logic into the editAuthor subscribe to handle errors
-        observable.subscribe(data => console.log(data));
-        this.goHome();
+        observable.subscribe(data => {
+            if (data['errors']) {
+                this.errors = data['errors'];
+            }
+            else {
+                console.log("Success!");
+                this.goHome();
+            }
+        });
     }
     goHome() {
         this._router.navigate(['/']);
@@ -914,14 +930,11 @@ let QuoteService = class QuoteService {
     addQuote(quote) {
         return this._http.put('/author/quote/' + quote.id, quote);
     }
-    voteUp(quote) {
-        return this._http.put('/vote/' + quote.id, quote);
+    vote(body) {
+        return this._http.put('/vote/' + body.author._id, body);
     }
-    voteDown(quote) {
-        return this._http.put('/vote/' + quote.id, quote);
-    }
-    deleteQuote(quote) {
-        return this._http.delete('/quotes/' + quote.id);
+    deleteQuote(body) {
+        return this._http.patch('/quotes/' + body.author._id, body);
     }
 };
 QuoteService.ctorParameters = () => [

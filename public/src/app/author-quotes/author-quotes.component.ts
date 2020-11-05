@@ -25,24 +25,23 @@ export class AuthorQuotesComponent implements OnInit {
     const observable = this._quote.getOneAuthor(id.id)
     observable.subscribe( data => this.author = data)
   }
-  voteUp(quote) {
-    // TODO: figure out how to send both author id and quote id to the service
+  voteUp(quote, author) {
     quote.vote += 1
-    quote.author.id = this.author._id
-    console.log(quote)
-    const observable = this._quote.voteUp(quote)
+    let body = {'quote': quote, 'author': author}
+    const observable = this._quote.vote(body)
     observable.subscribe( data => console.log(data))
   }
-  voteDown(quote) {
-    // TODO: figure out how to send both author id and quote id to the service
+  voteDown(quote, author) {
     quote.vote -= 1
-    const observable = this._quote.voteDown(quote)
+    let body = {'quote': quote, 'author': author}
+    const observable = this._quote.vote(body)
     observable.subscribe( data => console.log(data))
   }
-  deleteQuote(quote) {
-    // TODO: figure out how to send both author id and quote id to the service
-    const observable = this._quote.deleteQuote(quote)
+  deleteQuote(quote, author) {
+    let body = {'quote': quote, 'author': author}
+    const observable = this._quote.deleteQuote(body)
     observable.subscribe( data => console.log(data))
+    this.ngOnInit()
   }
   goHome() {
     this._router.navigate(['/'])

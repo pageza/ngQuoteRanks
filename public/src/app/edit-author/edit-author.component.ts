@@ -10,7 +10,7 @@ import { QuoteService} from "../quote.service";
 export class EditAuthorComponent implements OnInit {
   params: any;
   author: any;
-
+  errors: any;
   constructor(
     private _quote: QuoteService,
     private _route: ActivatedRoute,
@@ -27,9 +27,14 @@ export class EditAuthorComponent implements OnInit {
   }
   editAuthor(author) {
     const observable = this._quote.editAuthor(author)
-    //TODO: add logic into the editAuthor subscribe to handle errors
-    observable.subscribe(data => console.log(data))
-    this.goHome()
+    observable.subscribe(data => {
+      if (data['errors']) {
+        this.errors = data['errors']
+      } else {
+        console.log("Success!")
+        this.goHome()
+      }
+    })
   }
   goHome() {
     this._router.navigate(['/'])

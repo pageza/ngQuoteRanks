@@ -9,6 +9,7 @@ import { QuoteService} from '../quote.service';
 })
 export class AddAuthorComponent implements OnInit {
   newAuthor: any = {'author' : ''};
+  errors: any;
   // tslint:disable-next-line:variable-name
   constructor(private _router: Router, private _quote: QuoteService) { }
 
@@ -16,10 +17,16 @@ export class AddAuthorComponent implements OnInit {
   }
   addAuthor(newAuthor) {
     const observable = this._quote.addAuthor(newAuthor);
-    // TODO: write error and success logic into the addAuthor subscribe method
-    observable.subscribe( data => console.log(data));
-    this.newAuthor = {'author' : ''}
-    this.goHome()
+    observable.subscribe( data => {
+      if (data['errors']) {
+        this.errors = data['errors']
+      } else {
+        console.log("Success!")
+        this.newAuthor = {'author' : ''}
+        this.goHome()
+      }
+    });
+
   }
   goHome() {
     this._router.navigate(['']);

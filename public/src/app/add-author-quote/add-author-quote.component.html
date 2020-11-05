@@ -6,8 +6,7 @@
   <form class="form-group" (submit)="addQuote(quote)">
     <label for="quote">Quote:</label>
     <input id="quote" name="quote" type="text" [(ngModel)]="quote.quote" placeholder="Enter a quote">
-    <input name="authorID" type="text" [(ngModel)]="author._id" >
-<!--    TODO: add error message-->
+    <p class="alert-danger card border-danger w-auto" *ngIf="errors">{{errors.message}}</p>
     <div class="row">
       <button class="ml-3 btn btn-danger" (click)="goBack()">Cancel</button>
       <button class="ml-3 btn btn-primary" type="submit">Submit</button>
